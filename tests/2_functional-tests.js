@@ -197,10 +197,9 @@ suite('Functional Tests', function() {
       });
       
       test('Valid _id', function(done) {
-        // THIS TEST IS NOT ACCURATE - it's not sending the query
         chai.request(server)
           .delete('/api/issues/test')
-          .query({_id: testId})
+          .send({_id: testId})
           .end((err, res)=>{
             assert.equal(res.status, 200);
             assert.equal(res.text, `deleted ${testId}`);
